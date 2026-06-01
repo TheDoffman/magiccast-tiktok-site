@@ -3,88 +3,122 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MagicCast — TikTok connect</title>
+  <title>MagicCast Studio — automated short-form video for theme-park creators</title>
+  <meta name="description" content="MagicCast Studio helps creators turn Disney theme-park news into short-form videos and publish them to their own YouTube and TikTok accounts.">
 
   <!-- ============================================================
        TIKTOK DOMAIN VERIFICATION
-       When you add this URL as a redirect/property in TikTok for
-       Developers, TikTok offers a "meta tag" verification option and
-       gives you a value. Paste that value into content="" below and
-       re-upload this file, then click Verify in the TikTok portal.
-       (If TikTok instead gives you a downloadable .txt file, upload
-       THAT file to this same repo root and use the file method.)
+       TikTok verifies the site at its ROOT (this page). When you add
+       the URL property in TikTok for Developers, choose the meta-tag
+       method, paste the value TikTok gives you into content="" below,
+       re-upload this file, then click Verify.
+       (If TikTok gives a .txt file instead, upload that to the repo root.)
        ============================================================ -->
   <meta name="tiktok-developers-site-verification" content="PASTE_TIKTOK_VERIFICATION_VALUE_HERE">
 
   <style>
-    :root { color-scheme: light dark; }
-    body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
-           font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-           background:#0f0f12; color:#f5f5f7; }
-    .card { width:min(560px,92vw); background:#1c1c20; border:1px solid #2c2c32;
-            border-radius:16px; padding:28px 26px; box-shadow:0 10px 40px rgba(0,0,0,.4); }
-    h1 { font-size:18px; margin:0 0 4px; }
-    .sub { color:#a6a6ab; font-size:13px; margin:0 0 20px; }
-    .label { font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:#a6a6ab; margin-bottom:6px; }
-    .code { font-family:ui-monospace,Menlo,monospace; font-size:15px; word-break:break-all;
-            background:#0f0f12; border:1px solid #2c2c32; border-radius:10px; padding:14px; }
-    button { margin-top:14px; width:100%; padding:12px; font-size:15px; font-weight:600;
-             border:0; border-radius:10px; background:#a78bfa; color:#15121f; cursor:pointer; }
-    button:active { transform:translateY(1px); }
-    .ok { color:#30d158; }
-    .err { color:#ff9f0a; }
-    .hint { font-size:12px; color:#a6a6ab; margin-top:16px; line-height:1.5; }
-    .full { font-size:11px; color:#6e6e73; margin-top:10px; word-break:break-all; }
+    :root { color-scheme: dark; --accent:#a78bfa; --bg:#0f0f12; --card:#1a1a1f; --line:#2a2a31; --text:#f2f2f4; --muted:#a6a6ab; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--text);
+           font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.6; }
+    .wrap { max-width:920px; margin:0 auto; padding:0 22px; }
+    header { padding:22px 0; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--line); }
+    .brand { font-weight:700; font-size:17px; }
+    header nav a { color:var(--muted); text-decoration:none; font-size:14px; margin-left:18px; }
+    header nav a:hover { color:var(--text); }
+
+    .hero { padding:72px 0 56px; text-align:center; }
+    .hero .badge { display:inline-block; font-size:12px; letter-spacing:.06em; text-transform:uppercase;
+                   color:var(--accent); background:rgba(167,139,250,.12); border:1px solid rgba(167,139,250,.3);
+                   border-radius:999px; padding:5px 12px; margin-bottom:18px; }
+    .hero h1 { font-size:40px; line-height:1.15; margin:0 0 14px; }
+    .hero p { font-size:18px; color:var(--muted); max-width:620px; margin:0 auto; }
+
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; margin:8px 0 56px; }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:22px; }
+    .card h3 { margin:0 0 6px; font-size:16px; }
+    .card p { margin:0; color:var(--muted); font-size:14px; }
+    .emoji { font-size:22px; }
+
+    section.block { padding:8px 0 48px; }
+    section.block h2 { font-size:24px; margin:0 0 18px; text-align:center; }
+    ol.steps { max-width:640px; margin:0 auto; padding-left:20px; }
+    ol.steps li { margin-bottom:10px; color:var(--muted); }
+    ol.steps b { color:var(--text); }
+
+    .tiktok { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:24px 26px; max-width:760px; margin:0 auto; }
+    .tiktok h2 { text-align:left; margin-top:0; font-size:20px; }
+    .tiktok p { color:var(--muted); font-size:15px; }
+    .tiktok code { background:#0f0f12; border:1px solid var(--line); border-radius:5px; padding:1px 6px; font-size:13px; }
+
+    footer { border-top:1px solid var(--line); padding:28px 0 56px; color:var(--muted); font-size:13px; text-align:center; }
+    footer a { color:var(--accent); text-decoration:none; }
+    footer .disclaimer { margin-top:14px; font-size:12px; color:#6e6e73; max-width:680px; margin-left:auto; margin-right:auto; }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>🎬 MagicCast — TikTok connect</h1>
-    <p class="sub">TikTok sent you back here after you approved. Copy the code below and paste it into MagicCast → Settings → TikTok → Connect.</p>
+  <div class="wrap">
+    <header>
+      <div class="brand">🎬 MagicCast&nbsp;Studio</div>
+      <nav>
+        <a href="#how">How it works</a>
+        <a href="#tiktok">TikTok</a>
+        <a href="./privacy.html">Privacy</a>
+        <a href="./terms.html">Terms</a>
+      </nav>
+    </header>
 
-    <div class="label">Authorization code</div>
-    <div class="code" id="code">—</div>
-    <button id="copy">Copy code</button>
+    <div class="hero">
+      <span class="badge">Short-form video automation</span>
+      <h1>Turn theme-park news into short videos — automatically.</h1>
+      <p>MagicCast Studio helps creators produce daily short-form videos about Disney
+      theme-park news and publish them straight to their own YouTube and TikTok
+      channels, end to end.</p>
+    </div>
 
-    <div class="full" id="full"></div>
-    <p class="hint" id="hint"></p>
+    <div class="grid">
+      <div class="card"><div class="emoji">📰</div><h3>Sources the news</h3><p>Pulls the day's Disney parks stories from trusted news feeds and picks the most worthwhile ones.</p></div>
+      <div class="card"><div class="emoji">✍️</div><h3>Writes &amp; narrates</h3><p>Drafts a tight script and a natural voiceover, then composes a vertical 9:16 video with captions.</p></div>
+      <div class="card"><div class="emoji">🚀</div><h3>Publishes for you</h3><p>Uploads the finished video to your own connected accounts — YouTube and TikTok — on your schedule.</p></div>
+      <div class="card"><div class="emoji">📈</div><h3>Learns what works</h3><p>Reads your own watch-through and view data to help decide what to make next.</p></div>
+    </div>
+
+    <section class="block" id="how">
+      <h2>How it works</h2>
+      <ol class="steps">
+        <li><b>Connect your channels.</b> Authorize MagicCast to post to your own YouTube and TikTok accounts.</li>
+        <li><b>It builds the video.</b> Script, voiceover, visuals, and captions are assembled into a vertical short.</li>
+        <li><b>You review or automate.</b> Approve each one, or let it publish on a schedule you set.</li>
+        <li><b>It improves over time.</b> Your own performance stats guide future picks.</li>
+      </ol>
+    </section>
+
+    <section class="block" id="tiktok">
+      <div class="tiktok">
+        <h2>How MagicCast uses TikTok</h2>
+        <p>With your explicit authorization via TikTok Login Kit, MagicCast Studio uses
+        the <b>Content Posting API</b> to upload videos <em>you</em> create to
+        <em>your own</em> TikTok account. It requests only the permissions it needs:
+        <code>video.upload</code> and <code>video.publish</code> to publish your
+        videos, and <code>user.info.basic</code> to identify the connected account.</p>
+        <p>MagicCast acts solely on the account of the person who connects it. It does
+        not access, collect, or post on behalf of any other users, and it stores its
+        authorization token locally on the operator's own computer. You can disconnect
+        at any time from within the app or your TikTok settings. See our
+        <a href="./privacy.html">Privacy Policy</a> and <a href="./terms.html">Terms of Service</a>.</p>
+      </div>
+    </section>
   </div>
 
-  <script>
-    (function () {
-      var q = new URLSearchParams(location.search);
-      var code = q.get('code') || '';
-      var err  = q.get('error') || q.get('error_description') || '';
-      var codeEl = document.getElementById('code');
-      var hintEl = document.getElementById('hint');
-      var fullEl = document.getElementById('full');
-      var btn    = document.getElementById('copy');
-
-      if (code) {
-        codeEl.textContent = code;
-        hintEl.innerHTML = '<span class="ok">✓ Got it.</span> You can also paste this whole page URL into the app — it reads the code either way.';
-        fullEl.textContent = location.href;
-      } else if (err) {
-        codeEl.textContent = err;
-        codeEl.className = 'code err';
-        hintEl.innerHTML = '<span class="err">TikTok returned an error (not a code).</span> Most common cause: the redirect URI here doesn\'t exactly match the one registered in your TikTok app.';
-        btn.style.display = 'none';
-      } else {
-        codeEl.textContent = 'No code in the URL yet.';
-        hintEl.textContent = 'This page only shows a code after TikTok redirects you here during the connect flow. If you opened it directly, that\'s expected.';
-        btn.style.display = 'none';
-      }
-
-      btn.addEventListener('click', function () {
-        navigator.clipboard.writeText(code).then(function () {
-          btn.textContent = 'Copied ✓';
-          setTimeout(function () { btn.textContent = 'Copy code'; }, 1800);
-        }).catch(function () {
-          var r = document.createRange(); r.selectNode(codeEl);
-          getSelection().removeAllRanges(); getSelection().addRange(r);
-        });
-      });
-    })();
-  </script>
+  <footer>
+    <div class="wrap">
+      Contact: <a href="mailto:magicpulseapp@gmail.com">magicpulseapp@gmail.com</a>
+      &nbsp;·&nbsp; <a href="./privacy.html">Privacy Policy</a>
+      &nbsp;·&nbsp; <a href="./terms.html">Terms of Service</a>
+      <p class="disclaimer">MagicCast Studio is an independent tool and is not affiliated
+      with, endorsed by, or sponsored by TikTok, Google, YouTube, or The Walt Disney
+      Company. All trademarks belong to their respective owners.</p>
+    </div>
+  </footer>
 </body>
 </html>
